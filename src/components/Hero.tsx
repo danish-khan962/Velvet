@@ -19,7 +19,7 @@ const Hero = () => {
                 <h1 className={`${raleway700.className} capitalize text-4xl md:text-5xl lg:text-6xl leading-[60px] md:leading-relaxed text-center md:text-start`} style={{ wordSpacing: "0.3rem" }}>
                     Your image on a <span className="bg-purple-900 p-2 rounded">custom</span> phone case
                 </h1>
-                <p className="mt-[30px] md:mt-[50px] text-base md:text-[18px] leading-snug tracking-widest text-center md:text-start" style={{ wordSpacing: "0.1rem" }}>Capture your favorite memories with your own, <span className="font-semibold">one-of-one</span> phone case. "Velvet" allows you to protect your memories, not just your phone case.</p>
+                <p className="mt-[30px] md:mt-[50px] text-base md:text-[18px] leading-snug tracking-widest text-center md:text-start" style={{ wordSpacing: "0.1rem" }}>Capture your favorite memories with your own, <span className="font-semibold">one-of-one</span> phone case. Velvet allows you to protect your memories, not just your phone case.</p>
 
                 <div className="flex flex-col gap-y-2 mt-[30px] md:mt-[35px]">
                     {heroBenefits.map((benefit, index) => (
