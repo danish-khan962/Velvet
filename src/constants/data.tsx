@@ -55,6 +55,6 @@ export const testimonialData = [
         name: "Uzma Khan",
         designation: "Senior Advocate",
         image: "/images/customer_4.jpg",
-        review: "Got this as a gift and now I want to order one for myself. The velvet texture is super nice and the custom image looks amazing. I’ve had a few compliments already. Great job!"
+        review: "Got this as a gift and now I want to order one for myself. The velvet texture is super nice and the custom image looks amazing. I’ve had a few compliments already. Great job! Loved it honestly."
     },
 ];

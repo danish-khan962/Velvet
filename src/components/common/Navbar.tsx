@@ -19,7 +19,8 @@ const Navbar = () => {
   }
 
   return (
-    <div className={`${raleway400.className} px-4 md:px-20 bg-black py-3 md:py-4 flex flex-row justify-between items-center`}>
+    <div className='w-full bg-black'>
+      <div className={`${raleway400.className} custom-screen-width px-4 md:px-20  bg-black py-3 md:py-4 flex flex-row justify-between items-center`}>
       <Link href={"/"} className='text-base md:text-[18px] font-semibold tracking-widest'>
         Velvet
       </Link>
@@ -42,6 +43,7 @@ const Navbar = () => {
         </Link>
         {isOpen ? (<RiCloseLargeFill onClick={handleToggle} className='cursor-pointer transition ease-in-out duration-200 text-[18px]'/>) : (<FaGripLines onClick={handleToggle} className='cursor-pointer transition ease-in-out duration-200 text-[18px]'/>)}
       </div>
+    </div>
     </div>
   )
 }

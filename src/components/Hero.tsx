@@ -16,7 +16,7 @@ const Hero = () => {
     return (
         <div className="custom-screen-width mt-[35px] md:mt-[75px] px-4 md:px-20 flex flex-col md:flex-row justify-between items-center gap-10">
             <div className={`${raleway400.className}`}>
-                <h1 className={`${raleway700.className} capitalize text-4xl md:text-6xl leading-[60px] md:leading-relaxed text-center md:text-start`} style={{ wordSpacing: "0.3rem" }}>
+                <h1 className={`${raleway700.className} capitalize text-4xl md:text-5xl lg:text-6xl leading-[60px] md:leading-relaxed text-center md:text-start`} style={{ wordSpacing: "0.3rem" }}>
                     Your image on a <span className="bg-purple-900 p-2 rounded">custom</span> phone case
                 </h1>
                 <p className="mt-[30px] md:mt-[50px] text-base md:text-[18px] leading-snug tracking-widest text-center md:text-start" style={{ wordSpacing: "0.1rem" }}>Capture your favorite memories with your own, <span className="font-semibold">one-of-one</span> phone case. "Velvet" allows you to protect your memories, not just your phone case.</p>
