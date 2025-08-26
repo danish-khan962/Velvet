@@ -24,34 +24,43 @@ export const AnimatedTooltip = ({
   const springConfig = { stiffness: 100, damping: 15 };
   const x = useMotionValue(0);
   const animationFrameRef = useRef<number | null>(null);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]); // Track image refs
 
   const rotate = useSpring(
     useTransform(x, [-100, 100], [-45, 45]),
-    springConfig,
+    springConfig
   );
   const translateX = useSpring(
     useTransform(x, [-100, 100], [-50, 50]),
-    springConfig,
+    springConfig
   );
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLImageElement, MouseEvent>) => {
+  const handleMouseMove = (
+    event: React.MouseEvent<HTMLImageElement, MouseEvent>,
+    index: number
+  ) => {
     if (animationFrameRef.current) {
       cancelAnimationFrame(animationFrameRef.current);
     }
 
     animationFrameRef.current = requestAnimationFrame(() => {
-      const halfWidth = event.currentTarget.offsetWidth / 2;
-      x.set(event.nativeEvent.offsetX - halfWidth);
+      const image = imageRefs.current[index];
+      if (!image) return;
+
+      const rect = image.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left;
+      const halfWidth = rect.width / 2;
+
+      x.set(offsetX - halfWidth);
     });
   };
 
-
   return (
     <>
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
           className="group relative -mr-4"
-          key={item.name}
+          key={item.id}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
@@ -86,8 +95,10 @@ export const AnimatedTooltip = ({
               </motion.div>
             )}
           </AnimatePresence>
+
           <Image
-            onMouseMove={handleMouseMove}
+            ref={(el) => (imageRefs.current[index] = el)}
+            onMouseMove={(e) => handleMouseMove(e, index)}
             height={100}
             width={100}
             src={item.image}

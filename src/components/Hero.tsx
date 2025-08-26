@@ -4,6 +4,7 @@ import { MdOutlineDone } from "react-icons/md";
 import { FaStar } from 'react-icons/fa';
 import { AnimatedTooltip } from './ui/animated-tooltip';
 import { tooltipItems } from '@/constants/data';
+import Phone from './Phone';
 
 const raleway700 = Raleway({ subsets: ["latin"], weight: ["700"] });
 const raleway400 = Raleway({ subsets: ["latin"], weight: ["400"] });
@@ -14,7 +15,7 @@ const heroBenefits = ["High quality - durable material", "3 years print guarante
 
 const Hero = () => {
     return (
-        <div className="custom-screen-width mt-[35px] md:mt-[75px] px-4 md:px-20 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div className="custom-screen-width mt-[35px] md:mt-[75px] px-4 md:px-20 flex flex-col md:flex-row justify-between items-center gap-x-10 gap-y-32">
             <div className={`${raleway400.className}`}>
                 <h1 className={`${raleway700.className} capitalize text-4xl md:text-5xl lg:text-6xl leading-[60px] md:leading-relaxed text-center md:text-start`} style={{ wordSpacing: "0.3rem" }}>
                     Your image on a <span className="bg-purple-900 p-2 rounded">custom</span> phone case
@@ -47,7 +48,7 @@ const Hero = () => {
             </div>
 
             <div className="w-full max-w-[400px]">
-                    
+                    <Phone />
             </div>
 
         </div>
