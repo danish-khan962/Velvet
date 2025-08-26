@@ -1,3 +1,4 @@
+import CreateCase from "@/components/CreateCase";
 import Hero from "@/components/Hero";
 import Testimonial from "@/components/Testimonial";
 
@@ -7,6 +8,8 @@ export default function Home() {
       <Hero />
 
       <Testimonial />
+
+      <CreateCase />
     </>
   );
 }

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { MdOutlineDone } from 'react-icons/md';
 import { testimonialData } from '@/constants/data';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import wavyLine_1 from "../../public/images/wavy-line-1.png"
@@ -17,7 +17,7 @@ const raleway400 = Raleway({ subsets: ["latin"], weight: ["400"] });
 
 const Testimonial = () => {
     return (
-        <div className={`${raleway400.className} custom-screen-width px-4 md:px-20 mt-[80px] md:mt-[160px]`}>
+        <div className={`${raleway400.className} custom-screen-width px-4 md:px-20 mt-[120px] md:mt-[160px]`}>
             <div className='w-full'>
                 <h1 className={`${raleway700.className} relative text-3xl md:text-5xl text-center bottom-3`}> Hear from our clients</h1>
                 <Image src={wavyLine_1} alt="wavyLine" height={1000} width={1000} className='h-[20px] sm:h-[30px] md:h-[40px] lg:h-[50px] w-fit object-cover absolute right-[18%] sm:right-[25%] md:right-[28%] lg:right-[35%]'/>
@@ -25,7 +25,7 @@ const Testimonial = () => {
 
             <div className='mt-[80px] md:mt-[100px] relative'>
                 <Swiper
-                    modules={[ Pagination, Autoplay]}
+                    modules={[ Autoplay]}
                     spaceBetween={20}
                     slidesPerView={1}
                     pagination={{ clickable: true }}
@@ -48,10 +48,10 @@ const Testimonial = () => {
                                     ))}
                                 </div>
 
-                                <p className='text-base md:text-[18px] leading-relaxed'>
-                                    <span className='font-bold text-[22px]'> &quot; </span>
+                                <p className='text-base md:text-[18px] leading-relaxed text-white/85'>
+                                    <span className='font-bold text-[22px] text-white/100'> &quot; </span>
                                         {testimonial.review} 
-                                    <span className='font-bold text-[22px]'> &quot; </span>
+                                    <span className='font-bold text-[22px] text-white/100'> &quot; </span>
                                 </p>
 
                                 <div className='flex flex-row gap-x-6 md:gap-x-8 items-center'>
