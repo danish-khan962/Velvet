@@ -29,7 +29,7 @@ const Navbar = async() => {
                 <Link href={"/api/auth/logout"} className='text-sm text-white/80 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Logout </Link>
 
               {ADMIN ? (
-                <Link href={"/api/auth/logout"} className='text-sm text-orange-400 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Dashboard </Link>
+                <Link href={"/api/auth/logout"} className='text-sm text-indigo-400 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Dashboard </Link>
               ) : (null)}
 
               <Link href={"/configure/upload"} className='hidden sm:block ml-[15px]'>
