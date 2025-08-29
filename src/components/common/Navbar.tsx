@@ -1,49 +1,57 @@
-"use client"
-
-import React, {useState} from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { Raleway } from 'next/font/google'
 import { LuChevronRight } from "react-icons/lu";
-import { FaGripLines } from "react-icons/fa6";
-import { RiCloseLargeFill } from "react-icons/ri";
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
 const raleway400 = Raleway({ subsets: ["latin"], weight: ["400"] })
 
-const Navbar = () => {
+const Navbar = async() => {
 
-  // States for Menu toggle
-  const [isOpen, setIsOpen] = useState(false);
+  // USER authentication and server session + Admin dashboard
+  const {getUser} = getKindeServerSession()
+  const user = await getUser();
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  }
+  const ADMIN = user?.email === process.env.ADMIN_EMAIL;
 
   return (
     <div className='w-full bg-black'>
       <div className={`${raleway400.className} custom-screen-width px-4 md:px-20  bg-black py-3 md:py-4 flex flex-row justify-between items-center`}>
-      <Link href={"/"} className='text-base md:text-[18px] font-semibold tracking-widest'>
-        Velvet
-      </Link>
+        <Link href={"/"} className='text-base md:text-[18px] font-semibold tracking-widest'>
+          Velvet
+        </Link>
 
-      {/* Desktop Navigations */}
-      <div className='hidden sm:flex flex-row items-center'>
-        <div className='flex flex-row gap-x-8'>
-          <p className='text-sm text-white/80 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Sign up </p>
-          <p className='text-sm text-white/80 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Login </p>
+        {/* Desktop Navigations */}
+        <div className='flex flex-row items-center'>
+          {user ? (
+            <>
+              <div className='flex flex-row gap-x-8 items-center'>
+                <Link href={"/api/auth/logout"} className='text-sm text-white/80 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Logout </Link>
+
+              {ADMIN ? (
+                <Link href={"/api/auth/logout"} className='text-sm text-orange-400 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Dashboard </Link>
+              ) : (null)}
+
+              <Link href={"/configure/upload"} className='hidden sm:block ml-[15px]'>
+                <button className='flex flex-row items-center justify-between bg-violet-900 py-1.5 px-6 rounded-sm hover:scale-105 transition-all ease-in-out duration-200 cursor-pointer text-sm'>Build case <LuChevronRight className='ml-[12px] text-[18px]' /> </button>
+              </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className='flex flex-row gap-x-8 items-center'>
+                <Link href={"/api/auth/register"} className='text-sm text-white/80 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Sign up </Link>
+
+                <Link href={"/api/auth/login"} className='text-sm text-white/80 hover:cursor-pointer hover:text-white transition-colors ease-in-out duration-200'> Login </Link>
+
+                <Link href={"/configure/upload"} className='hidden sm:block ml-[15px]'>
+                  <button className='flex flex-row items-center justify-between bg-violet-900 py-1.5 px-6 rounded-sm hover:scale-105 transition-all ease-in-out duration-200 cursor-pointer text-sm'>Build case <LuChevronRight className='ml-[12px] text-[18px]' /> </button>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
-        <Link href={"/"} className='ml-[50px]'>
-          <button className='flex flex-row items-center justify-between bg-violet-900 py-1.5 px-6 rounded-sm hover:scale-105 transition-all ease-in-out duration-200 cursor-pointer text-sm'>Build case <LuChevronRight className='ml-[12px] text-[18px]'/> </button>
-        </Link>
       </div>
-
-      {/* Mobile Navigations */}
-      <div className='flex flex-row items-center gap-x-5 sm:hidden'>
-        <Link href={"/"} className='ml-[50px]'>
-          <button className='flex flex-row items-center justify-between bg-violet-900 py-1.5 px-6 rounded-sm hover:scale-105 transition-all ease-in-out duration-200 cursor-pointer text-sm'>Build case <LuChevronRight className='ml-[12px] text-[18px]'/> </button>
-        </Link>
-        {isOpen ? (<RiCloseLargeFill onClick={handleToggle} className='cursor-pointer transition ease-in-out duration-200 text-[18px]'/>) : (<FaGripLines onClick={handleToggle} className='cursor-pointer transition ease-in-out duration-200 text-[18px]'/>)}
-      </div>
-    </div>
     </div>
   )
 }
